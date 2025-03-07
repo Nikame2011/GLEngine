@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" >Космос: Runner-1</string>
+    <string name="exit">Выход</string>
+    <string name="new_game">Новая игра</string>
+</resources>

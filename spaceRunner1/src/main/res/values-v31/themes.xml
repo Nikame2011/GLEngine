@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SpaceRunner.Launcher">
+        <item name="android:windowNoTitle">false</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!--        <item name="android:windowSplashScreenBackground">@color/splashscreen_background</item>-->
+        <item name="android:windowSplashScreenAnimatedIcon">
+            @drawable/ic_splashscreen_ship_animated
+        </item>
+        <!--        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_splashscreen_branding_centered</item>-->
+        <item name="android:windowSplashScreenAnimationDuration">4500</item>
+    </style>
+</resources>
