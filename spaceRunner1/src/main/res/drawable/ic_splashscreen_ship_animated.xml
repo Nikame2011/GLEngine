@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/second_ship">
+    android:drawable="@drawable/ship">
+
     <target
-        android:name="logoGroup"
+        android:name="all"
         android:animation="@animator/splashscreen_animator" />
+
+    <target
+        android:name="elerones"
+        android:animation="@animator/elevones_animator" />
+
+    <target
+        android:name="engine"
+        android:animation="@animator/engine_animator" />
+
+    <target
+        android:name="elerones2"
+        android:animation="@animator/elevones_animator" />
 </animated-vector>

@@ -1,5 +1,7 @@
 package com.nikame.glengine.Entity
 
+import kotlin.math.sqrt
+
 class XYZpoint(var x: Float, var y: Float) {
     var z = 0f
         get() = field
@@ -24,8 +26,8 @@ class XYZpoint(var x: Float, var y: Float) {
     }
 
     fun rotateTo(angles: XYZpoint): XYZpoint {
-        val cosZ = Math.cos(Math.toRadians(angles.z.toDouble()))
-        val sinZ = Math.sin(Math.toRadians(angles.z.toDouble()))
+        val cosZ = Math.cos(Math.toRadians(-angles.z.toDouble()))
+        val sinZ = Math.sin(Math.toRadians(-angles.z.toDouble()))
         val cosX = Math.cos(Math.toRadians(angles.x.toDouble()))
         val sinX = Math.sin(Math.toRadians(angles.x.toDouble()))
         val cosY = Math.cos(Math.toRadians(angles.y.toDouble()))
@@ -41,5 +43,13 @@ class XYZpoint(var x: Float, var y: Float) {
         val zY = zX * cosY - xZ * sinY
 
         return XYZpoint(xY.toFloat(), yX.toFloat(), zY.toFloat())
+    }
+
+    fun length(): Float {
+        return sqrt(x * x + y * y + z * z)
+    }
+
+    fun lengthPow(): Float {
+        return x * x + y * y + z * z
     }
 }

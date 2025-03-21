@@ -10,7 +10,7 @@
         android:theme="@style/Theme.SpaceRunner">
         <activity
             android:name=".GameActivity"
-            android:theme="@style/Theme.SpaceRunnerCompat"
+            android:theme="@style/Theme.SpaceRunnerCompat.Launcher"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

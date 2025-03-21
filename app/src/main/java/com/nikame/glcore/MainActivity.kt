@@ -6,6 +6,7 @@ import com.nikame.glengine.Entity.XYZpoint
 import com.nikame.glengine.GraphicActivity
 import com.nikame.glengine.gObjects.AbstractGObject
 import com.nikame.glengine.graphics.MainRender
+import kotlin.random.Random
 
 /*
 * создаём initActivity, в котором происходит полная активация ресурсов
@@ -29,30 +30,40 @@ class MainActivity : GraphicActivity() {
     override fun buildParams(): MainRender.Companion.Params {
         val par = MainRender.Companion.Params()
         par.context = applicationContext
-        par.scene.start = XYZpoint(0f, 0f, 3f)
+        par.scene.start = XYZpoint(-350f, -350f, 5f)
         par.scene.width = 700
         par.scene.height = 700
-        par.scene.depth = 6
-        par.camera.position = XYZpoint(0f, 0f, 5f)
-        par.camera.target = XYZpoint(0f, 0f, 0f)
+        par.scene.depth = 10
+        par.camera.distanceTarget = XYZpoint(0f, 0f, 5f)
+        par.camera.targetCoord = XYZpoint(0f, 0f, 0f)
         return par
     }
 
     override fun buildGObjects(): ArrayList<AbstractGObject> {
         val gObjects = arrayListOf<Part>()
-        gObjects.add(Part(R.drawable.ff2, 500f, 2500f, 0f))
-        gObjects.add(Part(R.drawable.ff1, 500f, 3125f, 0f))
-        gObjects.add(Part(R.drawable.head_new, 151f, 95f, 0f))
-        gObjects.add(Part(R.drawable.h_ny_2022_new, 89f, 101f, 0f))
+        val rand= Random(0)
+        val x=rand.nextInt(1000)
+        for(i in 0..2000+x){
+            val size=0.5f+rand.nextFloat()*3.5f
+            val star=Part(R.drawable.star,size,size,0f)
+            star.position= XYZpoint(-1000f+rand.nextInt(2000),-1000f+rand.nextInt(2000),0f)
+            gObjects.add(star)
+        }
 
-        gObjects.get(0).position = XYZpoint(100f, 3000f, 0f)
-        gObjects.get(1).position = XYZpoint(100f, 0f, 0f)
-        gObjects.get(2).position = XYZpoint(270f, 310f, 0f)
-        gObjects.get(2).center = XYZpoint(102f, 47f, 0f)
-        gObjects.get(3).position = XYZpoint(70f, 37f, 0f)
-        gObjects.get(3).center = XYZpoint(50f, 45f, 0f)
-        gObjects.get(3).parent = gObjects.get(2)
+
+//        val x=rand.nextInt(500)
+//        for(i in 0..500+x){
+//            val size=100f+rand.nextFloat()*200f
+//            val star=Part(R.drawable.stars,size,size,0f)
+//            star.position= XYZpoint(-2000f+rand.nextInt(4000),-2000f+rand.nextInt(4000),0f)
+//            gObjects.add(star)
+//        }
+
         return gObjects as ArrayList<AbstractGObject>
+    }
+
+    override fun onFrameChanged() {
+
     }
 
     class Part : AbstractGObject {
@@ -70,6 +81,38 @@ class MainActivity : GraphicActivity() {
         override fun getDrawRotation(): XYZpoint = rotation
 
         override fun getDrawRotationPos(): XYZpoint = center
+        override fun onCollisionFinded(collised: AbstractGObject) {
+
+        }
+
+        override fun clone(): AbstractGObject {
+            val copy = Part(drawableId, width, height, depth)
+
+            copy.uuid = uuid
+            copy.flags = flags
+            copy.textureId = textureId
+            copy.startIndex = startIndex
+            copy.position = position
+            copy.rotation = rotation
+            copy.center = center
+
+            copy.childsBack.clear()
+            for (child in childsBack) {
+                copy.childsBack.add(child.clone())
+            }
+
+            copy.childsTop.clear()
+            for (child in childsTop) {
+                copy.childsTop.add(child.clone())
+            }
+
+            copy.speed = speed
+            copy.acceleration = acceleration
+
+            copy.mModelMatrix=mModelMatrix
+            copy.bindedMatrix=bindedMatrix
+            return copy
+        }
     }
 
 

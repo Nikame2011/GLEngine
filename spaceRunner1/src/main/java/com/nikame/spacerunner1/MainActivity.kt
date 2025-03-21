@@ -57,7 +57,7 @@ fun Greeting(name: String, onExitClick: () -> Unit) {
             fillMaxSize()
                 .paint(
                     // Replace with your image id
-                    painterResource(id = R.drawable.ic_launcher_background),
+                    painterResource(id = R.drawable.fone),
                     contentScale = ContentScale.FillHeight
                 )
 
@@ -96,11 +96,6 @@ fun Greeting(name: String, onExitClick: () -> Unit) {
             }
             Spacer(modifier = Modifier.weight(1F))
 
-            Text(
-                text = "Hello bluad",
-                modifier = Modifier.padding(bottom = 5.dp)
-            )
-
             MenuButton(stringResource(R.string.new_game)) {
                 context.startActivity(
                     Intent(
@@ -109,8 +104,8 @@ fun Greeting(name: String, onExitClick: () -> Unit) {
                     )
                 )
             }
-            MenuButton("Hello bluad' opyat'") {}
-            MenuButton("Hello bluad' trizdi") {}
+            MenuButton("Continue") {}
+            MenuButton("Configs") {}
             MenuButton(stringResource(R.string.exit), onExitClick)
 
             Spacer(modifier = Modifier.weight(1F))

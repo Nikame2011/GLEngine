@@ -13,7 +13,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!--        <item name="android:windowSplashScreenBackground">@color/splashscreen_background</item>-->
+        <item name="android:windowSplashScreenBackground">@color/black</item>
         <item name="android:windowSplashScreenAnimatedIcon">
             @drawable/ic_splashscreen_ship_animated
         </item>
